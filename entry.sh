@@ -6,4 +6,4 @@ dir=$1
 
 cd ${GITHUB_WORKSPACE}
 
-xslint ${dir}
+xslint "${dir}"
