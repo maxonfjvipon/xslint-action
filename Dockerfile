@@ -1,3 +1,5 @@
+# SPDX-FileCopyrightText: Copyright (c) 2026 Max Trunnikov
+# SPDX-License-Identifier: MIT
 FROM node:22
 
 LABEL "repository"="https://github.com/maxonfjvipon/xslint-action"
