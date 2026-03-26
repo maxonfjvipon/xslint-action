@@ -4,18 +4,17 @@ set -euo pipefail
 
 cd ${GITHUB_WORKSPACE}
 
-arguments=""
+suppress=""
 
+IFS=$'\n'
 for arg in $1
 do
-  arguments="${arguments} ${arg} "
+  args+=(${arg})
 done
-
-suppress=""
 
 for sup in $2
 do
   suppress="${suppress} --suppress=${sup} "
 done
-
-xslint "${arguments} ${suppress}"
+IFS=' '
+xslint "${args[@]}" ${suppress}
