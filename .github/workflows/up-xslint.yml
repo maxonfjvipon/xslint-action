@@ -2,11 +2,10 @@
 # SPDX-License-Identifier: MIT
 ---
 # yamllint disable rule:line-length
-name: up
+name: up-xslint
 on:
   schedule:
     - cron: '0 * * * *'
-  workflow_dispatch:
 concurrency:
   group: up-${{ github.ref }}
   cancel-in-progress: true
