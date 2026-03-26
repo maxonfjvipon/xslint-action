@@ -19,9 +19,9 @@ jobs:
       - name: Get latest xslint version
         id: version
         run: |
-          latest=$(npm view @maxonfjvipon/xslint version)
+          latest="$(npm view @maxonfjvipon/xslint version)"
           echo "latest=$latest" >> $GITHUB_OUTPUT
-          current=$(grep -oP '@maxonfjvipon/xslint@\K[0-9.]+' Dockerfile)
+          current="$(grep -oP '@maxonfjvipon/xslint@\K[0-9.]+' Dockerfile)"
           echo "current=$current" >> $GITHUB_OUTPUT
       - name: Update Dockerfile if newer version
         if: steps.version.outputs.latest != steps.version.outputs.current
