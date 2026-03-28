@@ -7,16 +7,16 @@ branding:
   icon: alert-triangle
   color: orange
 inputs:
-  dir:
-    description: 'Working directory'
+  args:
+    description: 'Files and directories to check'
     required: true
-    default: '.'
+    default: false
   suppress:
-    description: 'Check to suppress'
+    description: 'Checks to suppress'
     required: false
 runs:
   using: 'docker'
   image: Dockerfile
   args:
-    - "${{ inputs.dir }}"
+    - "${{ inputs.args }}"
     - "${{ inputs.suppress }}"
