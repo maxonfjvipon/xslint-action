@@ -1,8 +1,10 @@
 #!/bin/bash
+# SPDX-FileCopyrightText: Copyright (c) 2026 Max Trunnikov
+# SPDX-License-Identifier: MIT
 
 set -euo pipefail
 
-cd ${GITHUB_WORKSPACE}
+cd "${GITHUB_WORKSPACE}"
 
 suppress=""
 

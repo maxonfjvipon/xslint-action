@@ -1,0 +1,39 @@
+# SPDX-FileCopyrightText: Copyright (c) 2026 Max Trunnikov
+# SPDX-License-Identifier: MIT
+---
+# yamllint disable rule:line-length
+name: up-xslint
+on:
+  schedule:
+    - cron: '0 * * * *'
+concurrency:
+  group: up-${{ github.ref }}
+  cancel-in-progress: true
+jobs:
+  up:
+    timeout-minutes: 15
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v6
+      - name: Get latest xslint version
+        id: version
+        run: |
+          set -e
+          latest="$(npm view "@maxonfjvipon/xslint" version)"
+          echo "latest=$latest" >> "$GITHUB_OUTPUT"
+          current="$(grep -oP '@maxonfjvipon/xslint@\K[0-9.]+' Dockerfile)"
+          echo "current=$current" >> "$GITHUB_OUTPUT"
+      - name: Update Dockerfile if newer version
+        if: steps.version.outputs.latest != steps.version.outputs.current
+        run: |
+          sed -E -i "s/@maxonfjvipon/xslint@[0-9.]*/@maxonfjvipon/xslint@${{ steps.version.outputs.latest }}/" Dockerfile
+      - uses: peter-evans/create-pull-request@v8
+        if: steps.version.outputs.latest != steps.version.outputs.current
+        with:
+          sign-commits: true
+          branch: xslint-version-up
+          commit-message: 'new version ${{ steps.version.outputs.latest }} in Dockerfile'
+          delete-branch: true
+          title: 'New version ${{ steps.version.outputs.latest }} in Dockerfile'
+          assignees: maxonfjvipon
+          base: master
