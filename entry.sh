@@ -9,11 +9,11 @@ cd "${GITHUB_WORKSPACE}"
 suppress=""
 
 IFS=$'\n'
-for arg in $1 do
+for arg in $1; do
   args+=("${arg}")
 done
 
-for sup in $2 do
+for sup in $2; do
   suppress="${suppress} --suppress=${sup} "
 done
 IFS=' '
