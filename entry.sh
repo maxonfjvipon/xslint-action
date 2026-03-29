@@ -9,14 +9,12 @@ cd "${GITHUB_WORKSPACE}"
 suppress=""
 
 IFS=$'\n'
-for arg in $1
-do
-  args+=(${arg})
+for arg in $1 do
+  args+=("${arg}")
 done
 
-for sup in $2
-do
+for sup in $2 do
   suppress="${suppress} --suppress=${sup} "
 done
 IFS=' '
-xslint "${args[@]}" ${suppress}
+xslint "${args[@]}" "${suppress}"

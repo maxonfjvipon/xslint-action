@@ -1,4 +1,4 @@
-# SPDX-FileCopyrightText: Copyright (c) 2021-2026 Yegor Bugayenko
+# SPDX-FileCopyrightText: Copyright (c) 2026 Max Trunnikov
 # SPDX-License-Identifier: MIT
 
 .SHELLFLAGS := -e -o pipefail -c
