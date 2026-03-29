@@ -6,7 +6,8 @@ set -euo pipefail
 
 cd "${GITHUB_WORKSPACE}"
 
-suppress=""
+agrs=()
+suppress=()
 
 IFS=$'\n'
 for arg in $1; do
@@ -14,7 +15,7 @@ for arg in $1; do
 done
 
 for sup in $2; do
-  suppress="${suppress} --suppress=${sup} "
+  suppress+=("--suppress=${sup}")
 done
 IFS=' '
-xslint "${args[@]}" "${suppress}"
+xslint "${args[@]}" "${suppress[@]}"
