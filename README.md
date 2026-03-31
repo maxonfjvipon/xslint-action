@@ -59,4 +59,5 @@ You will need GNU [make] installed
 
 Copyright (c) 2026 Max Trunnikov. MIT License.
 
+[guidelines]: https://www.yegor256.com/2014/04/15/github-guidelines.html
 [make]: https://www.gnu.org/software/make/manual/make.html
