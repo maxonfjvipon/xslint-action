@@ -17,7 +17,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v6
-      - uses: maxonfjvipon/xslint-action@v0.0.2
+      - uses: maxonfjvipon/xslint-action@0.0.2
 ```
 
 ### Examples
@@ -25,7 +25,7 @@ jobs:
 Lint a specific directory and/or file:
 
 ```yaml
-- uses: maxonfjvipon/xslint-action@v0.0.2
+- uses: maxonfjvipon/xslint-action@0.0.2
   with:
     args:
       - 'src/xsl'
@@ -35,7 +35,7 @@ Lint a specific directory and/or file:
 Suppress specific checks:
 
 ```yaml
-- uses: maxonfjvipon/xslint-action@v0.0.2
+- uses: maxonfjvipon/xslint-action@0.0.2
   with:
     suppress:
       - 'short-names'
