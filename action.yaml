@@ -9,8 +9,7 @@ branding:
 inputs:
   args:
     description: 'Files and directories to check'
-    required: true
-    default: false
+    required: false
   suppress:
     description: 'Checks to suppress'
     required: false
