@@ -53,7 +53,7 @@ before sending us your pull request please make sure all your tests pass:
 make
 ```
 
-You will need GNU [make] installed
+You will need GNU [make] and [Node.js] installed
 
 ## License
 
@@ -61,3 +61,4 @@ Copyright (c) 2026 Max Trunnikov. MIT License.
 
 [guidelines]: https://www.yegor256.com/2014/04/15/github-guidelines.html
 [make]: https://www.gnu.org/software/make/manual/make.html
+[Node.js]: https://nodejs.org

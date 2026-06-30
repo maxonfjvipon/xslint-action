@@ -17,4 +17,4 @@ jobs:
     steps:
       - uses: actions/checkout@v6
       - name: Run makefile
-        run: make test
+        run: make all

@@ -21,19 +21,19 @@ jobs:
           set -e
           latest="$(npm view "@maxonfjvipon/xslint" version)"
           echo "latest=$latest" >> "$GITHUB_OUTPUT"
-          current="$(grep -oP '@maxonfjvipon/xslint@\K[0-9.]+' Dockerfile)"
+          current="$(grep -oP '@maxonfjvipon/xslint@\K[0-9.]+' index.js)"
           echo "current=$current" >> "$GITHUB_OUTPUT"
-      - name: Update Dockerfile if newer version
+      - name: Update index.js if newer version
         if: steps.version.outputs.latest != steps.version.outputs.current
         run: |
-          sed -E -i "s/@maxonfjvipon/xslint@[0-9.]*/@maxonfjvipon/xslint@${{ steps.version.outputs.latest }}/" Dockerfile
+          sed -E -i "s|@maxonfjvipon/xslint@[0-9.]*|@maxonfjvipon/xslint@${{ steps.version.outputs.latest }}|" index.js
       - uses: peter-evans/create-pull-request@v8
         if: steps.version.outputs.latest != steps.version.outputs.current
         with:
           sign-commits: true
           branch: xslint-version-up
-          commit-message: 'new version ${{ steps.version.outputs.latest }} in Dockerfile'
+          commit-message: 'new version ${{ steps.version.outputs.latest }} in index.js'
           delete-branch: true
-          title: 'New version ${{ steps.version.outputs.latest }} in Dockerfile'
+          title: 'New version ${{ steps.version.outputs.latest }} in index.js'
           assignees: maxonfjvipon
           base: master
