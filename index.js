@@ -17,7 +17,11 @@ const outcome = spawnSync(
     ...lines(process.env.INPUT_ARGS),
     ...lines(process.env.INPUT_SUPPRESS).map((check) => `--suppress=${check}`),
   ],
-  {cwd: process.env.GITHUB_WORKSPACE, stdio: 'inherit'},
+  {
+    cwd: process.env.GITHUB_WORKSPACE,
+    stdio: 'inherit',
+    env: {...process.env, npm_config_ignore_scripts: 'true'},
+  },
 )
 if (outcome.error) {
   console.error(outcome.error.message)
