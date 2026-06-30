@@ -16,5 +16,11 @@ jobs:
     runs-on: ubuntu-24.04
     steps:
       - uses: actions/checkout@v6
+      - name: Diagnostics
+        run: |
+          echo "node=$(node -v) npm=$(npm -v) npx=$(command -v npx)"
+          echo "--- direct npx (live output) ---"
+          npx --yes @maxonfjvipon/xslint@0.0.6 xsl-packs/xsl-with-some-violations.xsl
+          echo "direct-npx-rc=$?"
       - name: Run makefile
         run: make all
